@@ -101,10 +101,18 @@ def login():
             session["uid"] = user["id"]
             return redirect("/dashboard")
         msg = "Login failed. Check your details."
-    return page(f"""<div class="card"><h2>Login</h2><p>{msg}</p>
-    <form method="post"><input name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button>Login</button></form><a href="/register">Create account</a></div>""")
+    return page(f"""<div class="card" style="max-width:520px;margin:35px auto;padding:28px">
+    <div style="font-size:13px;letter-spacing:3px;color:#0875df;font-weight:bold">👑 WELCOME TO</div>
+    <h2 style="font-size:32px;margin:12px 0;color:#102747">ROCKY BHAI</h2>
+    <p style="color:#64748b">Login to your account</p>
+    <h2 style="font-size:22px">Log in</h2><p>{msg}</p>
+    <form method="post">
+    <label>Username</label>
+    <input name="username" placeholder="Enter username" autocomplete="username" required>
+    <label>Password</label>
+    <input type="password" name="password" placeholder="Enter password" autocomplete="current-password" required>
+    <button style="padding:16px;font-size:17px">Log in</button>
+    </form><p style="color:#64748b">Naya account? <a href="/register">Create account</a></p></div>""")
 
 @app.route("/dashboard")
 @login_required
